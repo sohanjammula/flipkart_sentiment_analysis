@@ -3,6 +3,10 @@ numpy
 scikit-learn
 nltk
 flask
+xgboost
+catboost
+matplotlib
+seaborn
 
 
 -e .
