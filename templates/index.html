@@ -3,86 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <title>Flipkart Sentiment Analysis</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            background: linear-gradient(135deg, #2874f0, #6aa9ff);
         }
 
-        .container {
-            background: white;
-            padding: 30px;
-            width: 450px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
+        .card {
+            width: 480px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             text-align: center;
+        }
+
+        h1 {
+            color: #2874f0;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #666;
             margin-bottom: 20px;
         }
 
         textarea {
             width: 100%;
-            height: 120px;
-            padding: 10px;
+            height: 140px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 12px;
             font-size: 14px;
-            resize: none;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        textarea:focus {
+            border-color: #2874f0;
+            box-shadow: 0 0 5px rgba(40,116,240,0.4);
         }
 
         button {
             width: 100%;
-            padding: 10px;
-            margin-top: 15px;
+            margin-top: 18px;
+            padding: 12px;
             background: #2874f0;
-            color: white;
             border: none;
+            color: white;
             font-size: 16px;
+            border-radius: 10px;
             cursor: pointer;
-            border-radius: 4px;
+            transition: 0.3s;
         }
 
         button:hover {
-            background: #1a5fd0;
+            background: #1f5fd1;
+            transform: translateY(-2px);
         }
 
         .result {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
+            margin-top: 25px;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
         }
 
         .positive {
-            color: green;
+            background: #e6f7ec;
+            color: #1b8a3a;
         }
 
         .negative {
-            color: red;
+            background: #fde8e8;
+            color: #c62828;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Flipkart Review Sentiment</h2>
+<div class="card">
+    <h1>Flipkart Review Analyzer</h1>
+    <p>Enter a product review and detect its sentiment instantly</p>
 
     <form method="POST" action="/">
-        <textarea name="review" placeholder="Enter your product review here..." required></textarea>
+        <textarea name="review" placeholder="Type your product review here..." required></textarea>
         <button type="submit">Analyze Sentiment</button>
     </form>
 
     {% if sentiment %}
         <div class="result 
-            {% if sentiment == 'Positive 😊' %}positive{% else %}negative{% endif %}">
-            Sentiment: {{ sentiment }}
+            {% if 'Positive' in sentiment %}positive{% else %}negative{% endif %}">
+            Sentiment Result: {{ sentiment }}
         </div>
     {% endif %}
 </div>
 
 </body>
 </html>
+
